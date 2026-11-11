@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+    name="AuthenticationService"
+    targetNamespace="http://example.com/authentication"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://example.com/authentication">
+
+    <types>
+        <xsd:schema
+            targetNamespace="http://example.com/authentication"
+            elementFormDefault="qualified">
+
+            <!-- ======================== -->
+            <!-- REGISTER -->
+            <!-- ======================== -->
+
+            <xsd:element name="Register">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="username" type="xsd:string"/>
+                        <xsd:element name="email" type="xsd:string"/>
+                        <xsd:element name="phone" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="password" type="xsd:string"/>
+                        <xsd:element name="imageData" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="mimeType" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="RegisterResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="success" type="xsd:boolean"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="userId" type="xsd:int" minOccurs="0"/>
+                        <xsd:element name="profilePicture" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- ======================== -->
+            <!-- LOGIN -->
+            <!-- ======================== -->
+
+            <xsd:element name="Login">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="identifier" type="xsd:string"/>
+                        <xsd:element name="password" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="LoginResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="success" type="xsd:boolean"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="token" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="userId" type="xsd:int" minOccurs="0"/>
+                        <xsd:element name="username" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="email" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="role" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- ======================== -->
+            <!-- CHANGE USER ROLE -->
+            <!-- ======================== -->
+
+            <xsd:element name="ChangeUserRole">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="token" type="xsd:string"/>
+                        <xsd:element name="userId" type="xsd:int"/>
+                        <xsd:element name="newRole" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="ChangeUserRoleResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="success" type="xsd:boolean"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- ======================== -->
+            <!-- UPDATE PROFILE PICTURE -->
+            <!-- ======================== -->
+
+            <xsd:element name="UpdateProfilePicture">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="token" type="xsd:string"/>
+                        <xsd:element name="imageData" type="xsd:string"/>
+                        <xsd:element name="mimeType" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="UpdateProfilePictureResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="success" type="xsd:boolean"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="profilePicture" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- ======================== -->
+            <!-- GET PROFILE PICTURE -->
+            <!-- ======================== -->
+
+            <xsd:element name="GetProfilePicture">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="token" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="GetProfilePictureResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="success" type="xsd:boolean"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="mimeType" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="imageData" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        </xsd:schema>
+    </types>
+
+    <!-- ======================== -->
+    <!-- MESSAGES -->
+    <!-- ======================== -->
+
+    <message name="RegisterInput">
+        <part name="parameters" element="tns:Register"/>
+    </message>
+
+    <message name="RegisterOutput">
+        <part name="parameters" element="tns:RegisterResponse"/>
+    </message>
+
+    <message name="LoginInput">
+        <part name="parameters" element="tns:Login"/>
+    </message>
+
+    <message name="LoginOutput">
+        <part name="parameters" element="tns:LoginResponse"/>
+    </message>
+
+    <message name="ChangeUserRoleInput">
+        <part name="parameters" element="tns:ChangeUserRole"/>
+    </message>
+
+    <message name="ChangeUserRoleOutput">
+        <part name="parameters" element="tns:ChangeUserRoleResponse"/>
+    </message>
+
+    <message name="UpdateProfilePictureInput">
+        <part name="parameters" element="tns:UpdateProfilePicture"/>
+    </message>
+
+    <message name="UpdateProfilePictureOutput">
+        <part name="parameters" element="tns:UpdateProfilePictureResponse"/>
+    </message>
+
+    <message name="GetProfilePictureInput">
+        <part name="parameters" element="tns:GetProfilePicture"/>
+    </message>
+
+    <message name="GetProfilePictureOutput">
+        <part name="parameters" element="tns:GetProfilePictureResponse"/>
+    </message>
+
+    <!-- ======================== -->
+    <!-- PORT TYPE -->
+    <!-- ======================== -->
+
+    <portType name="AuthenticationPortType">
+
+        <operation name="Register">
+            <input message="tns:RegisterInput"/>
+            <output message="tns:RegisterOutput"/>
+        </operation>
+
+        <operation name="Login">
+            <input message="tns:LoginInput"/>
+            <output message="tns:LoginOutput"/>
+        </operation>
+
+        <operation name="ChangeUserRole">
+            <input message="tns:ChangeUserRoleInput"/>
+            <output message="tns:ChangeUserRoleOutput"/>
+        </operation>
+
+        <operation name="UpdateProfilePicture">
+            <input message="tns:UpdateProfilePictureInput"/>
+            <output message="tns:UpdateProfilePictureOutput"/>
+        </operation>
+
+        <operation name="GetProfilePicture">
+            <input message="tns:GetProfilePictureInput"/>
+            <output message="tns:GetProfilePictureOutput"/>
+        </operation>
+
+    </portType>
+
+    <!-- ======================== -->
+    <!-- SOAP BINDING -->
+    <!-- ======================== -->
+
+    <binding
+        name="AuthenticationBinding"
+        type="tns:AuthenticationPortType">
+
+        <soap:binding
+            style="document"
+            transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <operation name="Register">
+            <soap:operation soapAction="Register"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="Login">
+            <soap:operation soapAction="Login"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="ChangeUserRole">
+            <soap:operation soapAction="ChangeUserRole"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="UpdateProfilePicture">
+            <soap:operation soapAction="UpdateProfilePicture"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="GetProfilePicture">
+            <soap:operation soapAction="GetProfilePicture"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+    </binding>
+
+    <!-- ======================== -->
+    <!-- SERVICE -->
+    <!-- ======================== -->
+
+    <service name="AuthenticationService">
+        <port
+            name="AuthenticationPort"
+            binding="tns:AuthenticationBinding">
+            <soap:address
+                location="http://localhost:3002/soap/auth"/>
+        </port>
+    </service>
+
+</definitions>

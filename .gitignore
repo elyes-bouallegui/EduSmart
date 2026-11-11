@@ -1,0 +1,14 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+
+**/uploads/
+**/photo/
+
+
+node_modules/
+
+# Logs
+*.log
