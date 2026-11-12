@@ -1,0 +1,20 @@
+
+/* Champ téléphone */
+
+.fld-in .pre {
+  color: #5b6b8c;
+  font-weight: 600;
+  font-size: 14px;
+  padding-right: 12px;
+  border-right: 1px solid #d9e3f5;
+  white-space: nowrap;
+}
+
+#phone {
+  letter-spacing: 1px;
+}
+
+#phone::placeholder {
+  letter-spacing: 0;
+  color: #a3aec3;
+}

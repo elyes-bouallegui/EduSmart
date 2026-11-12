@@ -1,0 +1,14 @@
+
+/* Champ nom d'utilisateur */
+
+.fld-in input {
+  letter-spacing: 0.2px;
+}
+
+.fld-in input:focus {
+  outline: none;
+}
+
+.fld-in input::placeholder {
+  color: #a3aec3;
+}

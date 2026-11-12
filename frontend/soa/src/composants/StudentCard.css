@@ -1,0 +1,182 @@
+
+/* Carte étudiant */
+
+.stcard {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+  padding: 22px;
+  border-radius: 24px;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e6f0ff 100%
+  );
+
+  color: #0a3d91;
+
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
+
+  transform:
+    perspective(900px)
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    rotate(-3deg);
+
+  transition: transform 0.15s ease-out;
+}
+
+.stcard-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(26, 110, 240, 0.22) 48%,
+    transparent 66%
+  );
+
+  background-size: 250% 100%;
+  background-position: var(--sx, 120%) 0;
+}
+
+.stcard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.stcard-chip {
+  width: 36px;
+  height: 27px;
+  border-radius: 6px;
+
+  background: linear-gradient(
+    135deg,
+    #ffe28a,
+    #d9a441
+  );
+}
+
+.stcard-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 22px 0;
+}
+
+.stcard-photo {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 20px;
+
+  background-color: #1a6ef0;
+  background-position: center;
+  background-size: cover;
+
+  color: white;
+  font-size: 34px;
+  font-weight: 800;
+
+  box-shadow: 0 8px 20px -6px rgba(26, 110, 240, 0.6);
+}
+
+.stcard-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.stcard-name {
+  color: #0b1b3a;
+  font-size: 22px;
+  font-weight: 800;
+  word-break: break-word;
+}
+
+.stcard-line {
+  margin-top: 5px;
+  color: #4a5d85;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.stcard-stamp {
+  position: absolute;
+  top: 65px;
+  right: 18px;
+
+  padding: 3px 12px;
+
+  border: 3px solid #16a34a;
+  border-radius: 10px;
+
+  color: #16a34a;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  transform: rotate(-12deg) scale(2);
+  opacity: 0;
+
+  transition: all 0.35s ease;
+}
+
+.stcard.done .stcard-stamp {
+  opacity: 1;
+  transform: rotate(-12deg) scale(1);
+}
+
+.stcard-bars {
+  height: 26px;
+  border-radius: 3px;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #0b1b3a 0 2px,
+    transparent 2px 4px,
+    #0b1b3a 4px 7px,
+    transparent 7px 9px
+  );
+
+  opacity: 0.8;
+}
+
+.stcard-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  margin-top: 12px;
+
+  color: #4a5d85;
+  font-size: 11px;
+}
+
+@media (max-width: 480px) {
+  .stcard {
+    padding: 17px;
+  }
+
+  .stcard-photo {
+    width: 65px;
+    height: 65px;
+  }
+
+  .stcard-name {
+    font-size: 17px;
+  }
+}

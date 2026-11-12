@@ -1,0 +1,90 @@
+
+.fld {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.fld label {
+  display: block;
+  color: #0b1b3a;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.fld label i {
+  color: #dc2626;
+  font-style: normal;
+}
+
+.fld label small {
+  color: #7b89a5;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.fld-in {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  min-height: 52px;
+  border: 1.5px solid #d9e3f5;
+  border-radius: 14px;
+  background: #fff;
+  transition: all 0.25s ease;
+}
+
+.fld-in svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: #8292b0;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.fld-in:focus-within {
+  border-color: #1a6ef0;
+  box-shadow: 0 0 0 4px rgba(26, 110, 240, 0.12);
+}
+
+.fld-in:focus-within svg {
+  stroke: #1a6ef0;
+}
+
+.fld-in.bad {
+  border-color: #dc2626;
+}
+
+.fld-in input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #0b1b3a;
+  font: inherit;
+  padding: 14px 0;
+}
+
+.fld-in input::placeholder {
+  color: #a3aec3;
+}
+
+.fld-err {
+  min-height: 18px;
+  margin-top: 4px;
+  color: #dc2626;
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .fld-in {
+    min-height: 48px;
+    border-radius: 11px;
+  }
+}

@@ -1,0 +1,18 @@
+
+/* Champ Email */
+
+#email {
+  width: 100%;
+}
+
+#email:valid {
+  color: #0b1b3a;
+}
+
+#email::placeholder {
+  color: #a3aec3;
+}
+
+.fld-in:has(#email:focus) {
+  border-color: #1a6ef0;
+}
